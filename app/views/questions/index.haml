@@ -1,0 +1,8 @@
+.row.question-wrapper
+  .one-third.column.offset-by-one-third.column
+    %h1 Hey there good looking
+    %p You look great today.  Want to learn how to turn your idea into reality?
+
+    = form_tag '/questions', class: 'questions', method: 'post' do
+      = text_field_tag :name, class: 'u-full-width', placeholder: 'Enter your name to begin!', id: 'name-field'
+      = submit_tag "Let's Start", class: 'button button-primary'

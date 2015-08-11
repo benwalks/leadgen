@@ -1,0 +1,33 @@
+.row.question-wrapper
+  .one-half.column.image-half-left
+    = image_tag 'human-1.gif'
+  .one-half.column
+    %h2 Why do it at all?
+    %p Where does the passion come from?  Why do anything?
+
+    = form_tag "/questions/one", class: 'questions', method: 'put' do
+      = hidden_field_tag :id, value: "#{@user.id}"
+      .row
+        .six.columns
+          = label_tag "I'm an entrepreneur at heart"
+        .six.columns
+          = radio_button_tag :q1, value: '1', class: 'radio-button'
+      .row
+        .six.columns
+          = label_tag "I'm an entrepreneur at heart"
+        .six.columns
+          = radio_button_tag :q1, value: '2', class: 'radio-button'
+      .row
+        .six.columns
+          = label_tag "I'm an entrepreneur at heart"
+        .six.columns
+          = radio_button_tag :q1, value: '3', class: 'radio-button'
+      .row
+        .six.columns
+          = label_tag "I'm an entrepreneur at heart"
+        .six.columns
+          = radio_button_tag :q1, value: '4', class: 'radio-button'
+      .row
+        .one-third.column.one-third-offset.column.next-question-button
+          = hidden_form_method_field 'put'
+          = submit_tag 'Next Question!', class: 'button button-primary'

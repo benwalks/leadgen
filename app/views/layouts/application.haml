@@ -1,0 +1,8 @@
+%html
+  %head
+    %title theSpace | From Idea to Reality
+    = stylesheet_link_tag 'normalize', 'skeleton', 'application'
+    = yield_content :include
+  %body
+    .container.main
+      = yield

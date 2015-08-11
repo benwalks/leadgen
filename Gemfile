@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 # Distribute your app as a gem
 # gemspec
 
@@ -14,6 +13,7 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Component requirements
+gem 'bcrypt'
 gem 'sass'
 gem 'haml'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
@@ -21,6 +21,7 @@ gem 'sqlite3'
 
 # Test requirements
 gem 'rspec', :group => 'test'
+gem 'capybara', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem

@@ -1,0 +1,31 @@
+.row.question-wrapper
+  .one-half.column
+    %h2 Where is your focus?
+    %p Yoou need to ensure you're focused...
+
+    = form_tag '/question/two', class: 'questions', method: 'post' do
+      .row
+        .six.columns
+          = label_tag "Building incredible web applications"
+        .six.columns
+          = radio_button_tag :q1, value: '1', class: 'radio-button'
+      .row
+        .six.columns
+          = label_tag "Changing the world of mobile"
+        .six.columns
+          = radio_button_tag :q1, value: '2', class: 'radio-button'
+      .row
+        .six.columns
+          = label_tag "A game-changing physical product."
+        .six.columns
+          = radio_button_tag :q1, value: '3', class: 'radio-button'
+      .row
+        .six.columns
+          = label_tag "Just an idea... I'm not sure how to execute..."
+        .six.columns
+          = radio_button_tag :q1, value: '4', class: 'radio-button'
+      .row
+        .one-third.column.one-third-offset.column.next-question-button
+          = submit_tag 'Next Question!', class: 'button button-primary'
+  .one-half.column.image-half-right
+    = image_tag 'human-2.gif'
