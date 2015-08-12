@@ -48,4 +48,15 @@ describe 'answering the questionairre', :type => :feature do
     expect(page).to have_content 'Q4'
     expect(current_path).to eql '/questions/four'
   end
+  it 'accepts a valid answer for question 4' do
+    user = User.new(id: 1, name: 'Ben', q1: 2, q2: 4, q3: 1)
+    user.save
+
+    visit '/questions/four?id=1'
+    expect(page).to have_content "What's the biggest risk for your project?"
+    choose 'radio-3'
+    click_button 'Onto the last question'
+    expect(page).to have_content 'Q5'
+    expect(current_path).to eql '/questions/five'
+  end
 end

@@ -1,0 +1,33 @@
+.row.question-wrapper
+  .one-half.column.image-half-left
+    = image_tag 'human-3.gif'
+  .one-half.column
+    %h2 Q5: What's next on your journey?
+    %p Can your dreams be bootstrapped or will you need financial backing?
+
+    = form_tag "/questions/five", class: 'questions', method: 'put' do
+      .row
+        .nine.columns
+          = label_tag "I'll bootstrap like my life depends on it."
+        .three.columns
+          = radio_button_tag :q5, value: '1', class: 'radio-button', id: "radio-1"
+      .row
+        .nine.columns
+          = label_tag "I'm investing my own money into this project."
+        .three.columns
+          = radio_button_tag :q5, value: '2', class: 'radio-button', id: "radio-2"
+      .row
+        .nine.columns
+          = label_tag "I might need a government grant..."
+        .three.columns
+          = radio_button_tag :q5, value: '3', class: 'radio-button', id: "radio-3"
+      .row
+        .nine.columns
+          = label_tag "I'm going all in.  I need investors"
+        .three.columns
+          = radio_button_tag :q5, value: '4', class: 'radio-button', id: "radio-4"
+      .row
+        .one-third.column.one-third-offset.column.next-question-button
+          = hidden_field_tag :id, value: "#{@user.id}"
+          = hidden_form_method_field 'put'
+          = submit_tag 'Show me my guide', class: 'button button-primary'
