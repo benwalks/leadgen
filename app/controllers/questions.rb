@@ -53,13 +53,13 @@ Leadgen::App.controllers :questions do
     render :question_five
   end
 
-  post :five do
-    @user = User.find_by(params[:id])
-    @user.update(params[:q5])
+  put :five do
+    @user.update(q5: params[:q5])
+    redirect url(:questions, :result, id: @user.id)
   end
 
   get :result do
-    @user = User.find_by(params[:id])
+    render :result
   end
 
   post :result_create do
