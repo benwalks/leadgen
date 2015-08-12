@@ -20,10 +20,12 @@ gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 
 # Test requirements
-gem 'rspec', :group => 'test'
-gem 'capybara', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
-
+group :test do
+  gem 'rspec'
+  gem 'capybara'
+  gem 'database_cleaner', '~> 1.4.1'
+  gem 'rack-test', :require => 'rack/test'
+end
 # Padrino Stable Gem
 gem 'padrino', '0.12.5'
 
