@@ -27,7 +27,6 @@ Leadgen::App.controllers :questions do
   end
 
   put :two, params: [:q2] do
-    puts params
     @user.update(q2: params[:q2])
     redirect url(:questions, :three, id: @user.id)
   end
@@ -36,13 +35,13 @@ Leadgen::App.controllers :questions do
     render :question_three
   end
 
-  post :three do
-    @user = User.find_by(params[:id])
-    @user.update(params[:q3])
+  put :three, params: [:q3] do
+    @user.update(q3: params[:q3])
+    redirect url(:questions, :four, id: @user.id)
   end
 
   get :four do
-    @user = User.find_by(params[:id])
+    render :question_four
   end
 
   post :four do

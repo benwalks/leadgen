@@ -6,7 +6,6 @@
     %p Can your dreams be bootstrapped or will you need financial backing?
 
     = form_tag "/questions/three", class: 'questions', method: 'put' do
-      = hidden_field_tag :id, value: "#{@user.id}"
       .row
         .nine.columns
           = label_tag "I'll bootstrap like my life depends on it."
@@ -29,5 +28,6 @@
           = radio_button_tag :q3, value: '4', class: 'radio-button', id: "radio-4"
       .row
         .one-third.column.one-third-offset.column.next-question-button
+          = hidden_field_tag :id, value: "#{@user.id}"
           = hidden_form_method_field 'put'
-          = submit_tag 'Question Four Next!', class: 'button button-primary'
+          = submit_tag 'Almost done...', class: 'button button-primary'

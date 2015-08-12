@@ -1,12 +1,12 @@
 .row.question-wrapper
   .one-half.column
-    %h2 Q2: What is your target product?
-    %p Yoou need to ensure you're focused...
+    %h2 Q2: What is your dream product?
+    %p You need to ensure you're focused...
 
     = form_tag '/questions/two', class: 'questions', method: 'put' do
       .row
         .nine.columns
-          = label_tag "I want to build incredible web applications"
+          = label_tag "I want to build an incredible web application"
         .three.columns
           = radio_button_tag :q2, value: '1', class: 'radio-button', id: "radio-1"
       .row
