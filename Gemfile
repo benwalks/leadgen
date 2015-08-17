@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # gemspec
 
 # Server requirements
-# gem 'thin' # or mongrel
+gem 'thin' # or mongrel
 # gem 'trinidad', :platform => 'jruby'
 
 # Optional JSON codec (faster performance)
@@ -28,6 +28,10 @@ group :test do
 end
 # Padrino Stable Gem
 gem 'padrino', '0.12.5'
+
+group :production do
+  gem 'pg'
+end
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
