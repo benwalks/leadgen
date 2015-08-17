@@ -18,7 +18,7 @@ describe 'answering the questionairre', :type => :feature do
     user.save
 
     visit '/questions/one?id=1'
-    expect(page).to have_content 'Why do it at all?'
+    expect(page).to have_content "Alright #{user.name}, why build the dream at all?"
     choose 'radio-4'
     click_button 'Next Question!'
     expect(page).to have_content 'Q2'
@@ -67,7 +67,7 @@ describe 'answering the questionairre', :type => :feature do
     expect(page).to have_content "What's next on your journey?"
     choose 'radio-4'
     click_button 'Show me my guide'
-    expect(page).to have_content "Well done #{user.name}"
+    expect(page).to have_content "Nice work #{user.name}!"
     expect(current_path).to eql '/questions/result'
   end
   it 'shows the correct information based on user answers' do
@@ -76,7 +76,7 @@ describe 'answering the questionairre', :type => :feature do
 
     visit '/questions/result?id=1'
     expect(page).to have_content("Nice work #{user.name}! " \
-                                 " Let's discuss how you can move forward...")
+                                 " Let's discuss how you can move forward.")
     expect(page).to have_content("You probably haven't heard of them")
   end
 end

@@ -8,7 +8,6 @@ require 'database_cleaner'
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
-  conf.include Capybara
   conf.include Capybara::DSL
 
   conf.before(:suite) do
