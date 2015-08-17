@@ -4,12 +4,14 @@ Leadgen::App.controllers :questions do
   end
 
   get :index do
+    @user = User.new
     render :index
   end
 
   post :index, params: [:name] do
     @user = User.new(params)
     return redirect url(:questions, :one, id: @user.id) if @user.save
+    render :index
   end
 
   get :one do
@@ -62,8 +64,15 @@ Leadgen::App.controllers :questions do
     render :result
   end
 
-  post :result_create do
-
+  put :result do
+    email(from: 'ben@devwalks.com',
+          to: 'benn.walker@gmail.com',
+          subject: 'One more lead!',
+          body: render('email/new_lead'))
+    @user.update(lead: true)
+    redirect url(:questions, :thank_you, id: @user.id)
   end
-
+  get :thank_you do
+    render :thank_you
+  end
 end

@@ -5,7 +5,7 @@ describe 'answering the questionairre', :type => :feature do
     visit '/questions'
     expect(page).to have_content('Hey there')
   end
-  it 'accepts a valid name on the questions index' do
+  it 'quesitonnaire index accepts a valid name and redirects to the next page' do
     visit '/questions'
     fill_in 'name-field', with: 'Ben Walker'
     click_button "Let's Start"
@@ -13,7 +13,7 @@ describe 'answering the questionairre', :type => :feature do
     expect(current_path).to eql '/questions/one'
   end
   # it won't accept an invalid name
-  it 'accepts a valid answer for question 1' do
+  it 'accepts a valid answer for question 1 and redirects to the next page' do
     user = User.new(id: 1, name: 'Ben')
     user.save
 
@@ -25,7 +25,7 @@ describe 'answering the questionairre', :type => :feature do
     expect(current_path).to eql '/questions/two'
   end
   # it must have a selection before continuing
-  it 'accepts a valid answer for question 2' do
+  it 'accepts a valid answer for question 2 and redirects to the next page' do
     user = User.new(id: 1, name: 'Ben', q1: 2)
     user.save
 
@@ -37,7 +37,7 @@ describe 'answering the questionairre', :type => :feature do
     expect(current_path).to eql '/questions/three'
   end
   # must have a selection before continuing
-  it 'accepts a valid answer for question 3' do
+  it 'accepts a valid answer for question 3 and redirects to the next page' do
     user = User.new(id: 1, name: 'Ben', q1: 2, q2: 4)
     user.save
 
@@ -48,7 +48,7 @@ describe 'answering the questionairre', :type => :feature do
     expect(page).to have_content 'Q4'
     expect(current_path).to eql '/questions/four'
   end
-  it 'accepts a valid answer for question 4' do
+  it 'accepts a valid answer for question 4 and redirects to the next page' do
     user = User.new(id: 1, name: 'Ben', q1: 2, q2: 4, q3: 1)
     user.save
 
@@ -59,8 +59,8 @@ describe 'answering the questionairre', :type => :feature do
     expect(page).to have_content 'Q5'
     expect(current_path).to eql '/questions/five'
   end
-  it 'accepts a valid answer for question 4' do
-    user = User.new(id: 1, name: 'Ben', q1: 2, q2: 4, q3: 1)
+  it 'accepts a valid answer for question 5 and redirects to the next page' do
+    user = User.new(id: 1, name: 'Ben', q1: 2, q2: 4, q3: 1, q4: 3)
     user.save
 
     visit '/questions/five?id=1'
@@ -69,5 +69,14 @@ describe 'answering the questionairre', :type => :feature do
     click_button 'Show me my guide'
     expect(page).to have_content "Well done #{user.name}"
     expect(current_path).to eql '/questions/result'
+  end
+  it 'shows the correct information based on user answers' do
+    user = User.new(id: 1, name: 'Ben', q1: 2, q2: 4, q3: 1, q4: 3, q5: 2)
+    user.save
+
+    visit '/questions/result?id=1'
+    expect(page).to have_content("Nice work #{user.name}! " \
+                                 " Let's discuss how you can move forward...")
+    expect(page).to have_content("You probably haven't heard of them")
   end
 end

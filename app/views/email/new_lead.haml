@@ -1,0 +1,20 @@
+%h2 Heya Troy & Damien, you've got a new lead!
+
+%p= "Their names is #{@user.name} and their email is #{@user.email}"
+
+%p Here's how they answered their questions:
+
+%h3 What's the purpose?
+= render 'results/question_one_result', :user => @user
+%h3 What's your dream product?
+= render 'results/question_two_result', :user => @user
+%h3 Will you need funding?
+= render 'results/question_three_result', :user => @user
+%h3 What's the biggest risk for your product?
+= render 'results/question_four_result', :user => @user
+%h3 What's next on your journey?
+= render 'results/question_five_result', :user => @user
+
+Good luck!
+
+Ben

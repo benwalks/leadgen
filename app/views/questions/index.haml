@@ -4,5 +4,6 @@
     %p You look great today.  Want to learn how to turn your idea into reality?
 
     = form_tag '/questions', class: 'questions', method: 'post' do
+      = error_messages_for @user, header_message: '', message: 'Hmmmm...'
       = text_field_tag :name, class: 'u-full-width', placeholder: 'Enter your name to begin!', id: 'name-field'
       = submit_tag "Let's Start", class: 'button button-primary'

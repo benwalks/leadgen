@@ -2,7 +2,7 @@
   .one-half.column
     = image_tag 'human-1.gif', class: 'image-half-right'
   .one-half.column
-    %h2 Q1: Why do it at all?
+    %h2= "Q1: Alright #{@user.name}, why build the dream at all?"
     %p Where does the passion come from?  Why do anything?
 
     = form_tag "/questions/one", class: 'questions', method: 'put' do

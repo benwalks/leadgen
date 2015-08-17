@@ -1,1 +1,23 @@
-%h2="Well done #{@user.name}!  Let's discuss how you can move forward..."
+.question-wrapper
+  %h2="Nice work #{@user.name}!  Let's discuss how you can move forward."
+  %h3 What's the purpose?
+  = render 'results/question_one_result', :user => @user
+  %h3 What's your dream product?
+  = render 'results/question_two_result', :user => @user
+  %h3 Will you need funding?
+  = render 'results/question_three_result', :user => @user
+  %h3 What's the biggest risk for your product?
+  = render 'results/question_four_result', :user => @user
+  %h3 What's next on your journey?
+  = render 'results/question_five_result', :user => @user
+  %h3.CTA
+    We can help turn your dreams into reality.
+  %p Sure, this guide moves you in the right direction, but we can take you to the next level.
+  = form_tag '/questions/result', class: 'questions', method: 'put' do
+    = error_messages_for @user, header_message: '', message: 'Hmmmm...'
+    = hidden_field_tag :id, value: "#{@user.id}"
+    .row
+      .two-thirds.column
+        = email_field_tag :name, class: 'u-full-width', placeholder: "Enter your email and let's chat", id: 'name-field'
+      .one-third.column
+        = submit_tag "Let's Start", class: 'button button-primary'

@@ -15,4 +15,10 @@
 .next-question-button {
   margin-top: 2em; }
 
+.field-errors {
+  color: red; }
+
+.CTA {
+  color: red; }
+
 /*# sourceMappingURL=application.css.map */
